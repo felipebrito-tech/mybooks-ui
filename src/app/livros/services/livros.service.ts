@@ -2,22 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, tap } from 'rxjs';
 
-import { Assunto } from './../model/assunto';
+import { Livro } from './../../livros/model/livro';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AssuntosService {
+export class LivrosService {
 
-  private readonly API = '/api/assuntos';
+  private readonly API = '/api/livros';
 
   constructor(private httpClient: HttpClient) { }
 
   listAll() {
-    return this.httpClient.get<Assunto[]>(this.API)
+    return this.httpClient.get<Livro[]>(this.API)
                 .pipe(
                   first(),
-                  tap(assuntos => console.log(assuntos))
+                  tap(livros => console.log(livros))
                 );
   }
 }
