@@ -1,0 +1,27 @@
+.card {
+  height: 80%;
+}
+
+.content {
+  margin: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-nome {
+  border-right: 1px solid currentColor;
+}
+
+.mat-column-codL {
+  padding-left: 20px;
+}
+
+.loading-spinner {
+  background: seashell;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

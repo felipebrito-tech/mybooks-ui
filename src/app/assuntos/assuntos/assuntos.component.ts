@@ -14,17 +14,21 @@ import { AssuntosService } from './../services/assuntos.service';
 export class AssuntosComponent implements OnInit {
 
   assuntos$: Observable<Assunto[]>;
-  displayedColumns = ['codAs','descricao']
+  displayedColumns = ['codAs','descricao', 'acoes'];
 
   constructor(private assuntosService: AssuntosService, public dialog: MatDialog) {
-    this.assuntos$ = this.assuntosService.listAll()
-                          .pipe(
-                            catchError(error => {
-                              this.onError('Não foi possível carregar os assuntos!');
-                              console.log(error.message);
-                              return of([])
-                            })
-                          );
+    this.assuntos$ = this.updateAssuntos();
+  }
+
+  updateAssuntos(): Observable<Assunto[]> {
+    return this.assuntosService.listAll()
+                .pipe(
+                  catchError(error => {
+                    this.onError('Não foi possível carregar os assuntos!');
+                    console.log(error.message);
+                    return of([])
+                  })
+                );
   }
 
   onError(errorMessage: string) {
@@ -34,6 +38,19 @@ export class AssuntosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  edit(codAs: number) {
+    console.log('edit');
+  }
+
+  delete(codAs: number) {
+    this.assuntosService.delete(codAs)
+          .subscribe(
+            () => {
+              this.assuntos$ = this.updateAssuntos();
+            }
+          );
   }
 
 }

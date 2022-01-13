@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, tap } from 'rxjs';
+import { catchError, first, tap } from 'rxjs';
 
 import { Assunto } from './../model/assunto';
 
@@ -19,5 +19,9 @@ export class AssuntosService {
                   first(),
                   tap(assuntos => console.log(assuntos))
                 );
+  }
+
+  delete(codAs: number) {
+    return this.httpClient.delete<Assunto>(this.API+'/'+codAs);
   }
 }
