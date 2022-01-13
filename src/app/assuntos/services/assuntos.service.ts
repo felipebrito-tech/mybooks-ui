@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, first, tap } from 'rxjs';
+import { first, tap } from 'rxjs';
 
 import { Assunto } from './../model/assunto';
 
