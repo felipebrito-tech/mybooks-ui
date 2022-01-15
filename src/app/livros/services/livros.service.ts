@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { first, Observable, tap } from 'rxjs';
 
 import { Livro } from './../../livros/model/livro';
 
@@ -23,5 +23,17 @@ export class LivrosService {
 
   delete(codL: number) {
     return this.httpClient.delete<Livro>(this.API+'/'+codL);
+  }
+
+  createLivro(livro: Livro): Observable<Livro> {
+    return this.httpClient.post<Livro>(this.API, livro);
+  }
+
+  getLivroBy(codL: number): Observable<Livro> {
+    return this.httpClient.get<Livro>(`${this.API}/${codL}`);
+  }
+
+  updateLivro(livro: Livro): Observable<Livro> {
+    return this.httpClient.put<Livro>(`${this.API}/${livro.codL}`, livro);
   }
 }

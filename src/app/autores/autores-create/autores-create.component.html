@@ -1,17 +1,17 @@
 <mat-card class="card">
   <div class="content">
-    <mat-toolbar color="primary">Autores</mat-toolbar>
+    <mat-toolbar color="primary">Cadastrar Autor</mat-toolbar>
 
     <mat-card class="card fields">
-        <mat-form-field appearance="fill">
-          <mat-label>Nome</mat-label>
-          <input matInput type="text" maxlength="40" required [(ngModel)]="autor.nome" #nome="ngModel">
-          <mat-error *ngIf="nome.errors?.['required']">
-            O campo nome é <strong>obrigatório</strong>!
-          </mat-error>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" maxlength="40" required [(ngModel)]="autor.nome" #nome="ngModel">
+        <mat-error *ngIf="nome.errors?.['required']">
+          O campo nome é <strong>obrigatório</strong>!
+        </mat-error>
+      </mat-form-field>
 
-        <button mat-raised-button color="primary" *ngIf="!nome.errors?.['required']" (click)="createAutor()">Salvar</button>
+      <button mat-raised-button color="primary" *ngIf="!nome.errors?.['required']" (click)="createAutor()">Salvar</button>
     </mat-card>
   </div>
 </mat-card>
