@@ -1,4 +1,4 @@
 export interface Assunto {
-  codL: number;
+  codAs: number;
   descricao: string;
 }

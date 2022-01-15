@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { first, Observable, tap } from 'rxjs';
 
 import { Autor } from './../model/autor';
 
@@ -13,7 +13,7 @@ export class AutoresService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listAll() {
+  listAll(): Observable<Autor[]> {
     return this.httpClient.get<Autor[]>(this.API)
                 .pipe(
                   first(),
@@ -23,5 +23,17 @@ export class AutoresService {
 
   delete(codAu: number) {
     return this.httpClient.delete<Autor>(this.API+'/'+codAu);
+  }
+
+  createAutor(autor: Autor): Observable<Autor> {
+    return this.httpClient.post<Autor>(this.API, autor);
+  }
+
+  getAutorBy(codAu: number): Observable<Autor> {
+    return this.httpClient.get<Autor>(`${this.API}/${codAu}`);
+  }
+
+  updateAutor(autor: Autor): Observable<Autor> {
+    return this.httpClient.put<Autor>(`${this.API}/${autor.codAu}`, autor);
   }
 }

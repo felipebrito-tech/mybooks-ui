@@ -40,10 +40,6 @@ export class AutoresComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  edit(codAu: number) {
-    console.log('edit');
-  }
-
   delete(codAu: number) {
     this.autoresService.delete(codAu)
           .subscribe(

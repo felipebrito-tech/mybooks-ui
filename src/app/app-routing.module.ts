@@ -8,11 +8,35 @@ const routes: Routes = [
     loadChildren: () => import('./assuntos/assuntos.module').then(m => m.AssuntosModule)
   },
   {
+    path: 'assuntos/novo',
+    loadChildren: () => import('./assuntos/assuntos.module').then(m => m.AssuntosModule)
+  },
+  {
+    path: 'assuntos/editar/:codAs',
+    loadChildren: () => import('./assuntos/assuntos.module').then(m => m.AssuntosModule)
+  },
+  {
     path: 'autores',
     loadChildren: () => import('./autores/autores.module').then(m => m.AutoresModule)
   },
   {
+    path: 'autores/novo',
+    loadChildren: () => import('./autores/autores.module').then(m => m.AutoresModule)
+  },
+  {
+    path: 'autores/editar/:codAu',
+    loadChildren: () => import('./autores/autores.module').then(m => m.AutoresModule)
+  },
+  {
     path: 'livros',
+    loadChildren: () => import('./livros/livros.module').then(m => m.LivrosModule)
+  },
+  {
+    path: 'livros/novo',
+    loadChildren: () => import('./livros/livros.module').then(m => m.LivrosModule)
+  },
+  {
+    path: 'livros/editar/:codL',
     loadChildren: () => import('./livros/livros.module').then(m => m.LivrosModule)
   },
   {

@@ -40,12 +40,15 @@ export class AssuntosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  edit(codAs: number) {
-    console.log('edit');
-  }
-
   delete(codAs: number) {
     this.assuntosService.delete(codAs)
+          .pipe(
+            catchError(error => {
+              this.onError('Não foi possível excluir o assunto!');
+              console.log(error.message);
+              return of([])
+            })
+          )
           .subscribe(
             () => {
               this.assuntos$ = this.updateAssuntos();

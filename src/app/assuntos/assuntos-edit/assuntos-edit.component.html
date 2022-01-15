@@ -1,0 +1,18 @@
+<mat-card class="card">
+  <div class="content">
+    <mat-toolbar color="primary">Assuntos</mat-toolbar>
+
+    <mat-card class="card fields">
+        <mat-form-field appearance="fill">
+          <mat-label>Descrição</mat-label>
+          <input matInput type="text" maxlength="20" required [(ngModel)]="assunto.descricao" #descricao="ngModel">
+          <mat-error *ngIf="descricao.errors?.['required']">
+            O campo descrição é <strong>obrigatório</strong>!
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" *ngIf="!descricao.errors?.['required']" (click)="updateAssunto()">Salvar</button>
+    </mat-card>
+  </div>
+</mat-card>
+

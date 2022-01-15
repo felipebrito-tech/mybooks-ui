@@ -56,10 +56,6 @@ export class LivrosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  edit(codL: number) {
-    console.log('edit');
-  }
-
   delete(codL: number) {
     this.livrosService.delete(codL)
           .subscribe(

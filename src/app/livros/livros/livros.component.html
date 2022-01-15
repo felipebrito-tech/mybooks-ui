@@ -1,6 +1,14 @@
 <mat-card class="card">
   <div class="content">
-    <mat-toolbar color="primary">Livros</mat-toolbar>
+    <mat-toolbar color="primary">
+      Livros
+
+      <div class="create-button-container">
+        <button mat-mini-fab color="white" aria-label="Novo Livro" class="create-button" routerLink="/livros/novo">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
 
     <div *ngIf="livros$ | async as livros; else loading">
       <table mat-table [dataSource]="livros" class="mat-elevation-z8">
@@ -43,8 +51,12 @@
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef> Ações </th>
           <td mat-cell *matCellDef="let livro">
-            <mat-icon aria-hidden="false" aria-label="Editar livro" (click)="edit(livro.codL)">mode_edit</mat-icon>
-            <mat-icon aria-hidden="false" aria-label="Excluir livro" (click)="delete(livro.codL)">delete</mat-icon>
+            <button mat-mini-fab color="accent" aria-label="Editar livro">
+              <mat-icon aria-hidden="false" aria-label="Editar livro" [routerLink]="['/livros/editar', livro.codL]">mode_edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" aria-label="Excluir livro">
+              <mat-icon aria-hidden="false" aria-label="Excluir livro" (click)="delete(livro.codL)">delete</mat-icon>
+            </button>
           </td>
         </ng-container>
 

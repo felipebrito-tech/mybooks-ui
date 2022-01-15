@@ -1,6 +1,14 @@
 <mat-card class="card">
   <div class="content">
-    <mat-toolbar color="primary">Autores</mat-toolbar>
+    <mat-toolbar color="primary">
+      Autores
+
+      <div class="create-button-container">
+        <button mat-mini-fab color="white" aria-label="Novo Autores" class="create-button" routerLink="/autores/novo">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
 
     <div *ngIf="autores$ | async as autores; else loading">
       <table mat-table [dataSource]="autores" class="mat-elevation-z8">
@@ -18,8 +26,12 @@
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef> Ações </th>
           <td mat-cell *matCellDef="let autor">
-            <mat-icon aria-hidden="false" aria-label="Editar autor" (click)="edit(autor.codAu)">mode_edit</mat-icon>
-            <mat-icon aria-hidden="false" aria-label="Excluir autor" (click)="delete(autor.codAu)">delete</mat-icon>
+            <button mat-mini-fab color="accent" aria-label="Editar autor">
+              <mat-icon aria-hidden="false" aria-label="Editar autor" [routerLink]="['/autores/editar', autor.codAu]">mode_edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" aria-label="Excluir autor">
+              <mat-icon aria-hidden="false" aria-label="Excluir autor" (click)="delete(autor.codAu)">delete</mat-icon>
+            </button>
           </td>
         </ng-container>
 
